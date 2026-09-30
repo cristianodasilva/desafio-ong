@@ -11,15 +11,25 @@
 </head>
 
 <body>
+    <a
+        class="skip-link"
+        href="#conteudo-principal"
+    >
+        Pular para o conteúdo principal
+    </a>
+
     <!-- Conteúdo dos projetos -->
-    <main>
+    <main
+        id="conteudo-principal"
+        tabindex="-1"
+    >
         <!-- Doações -->
         <section
             id="doacoes"
             class="container"
+            aria-labelledby="titulo-doacoes"
         >
-
-            <h2>Faça uma doação</h2>
+            <h2 id="titulo-doacoes">Faça uma doação</h2>
 
             <p>
                 Sua contribuição ajuda a manter nossas ações sociais
@@ -43,9 +53,11 @@
         </section>
 
         <!-- Voluntariado -->
-        <section class="container">
-
-            <h2>Seja um voluntário</h2>
+        <section
+            class="container"
+            aria-labelledby="titulo-voluntariado"
+        >
+            <h2 id="titulo-voluntariado">Seja um voluntário</h2>
 
             <p>
                 Você pode contribuir com seu tempo e suas habilidades
@@ -63,15 +75,21 @@
         <section
             id="iniciativas"
             class="container"
+            aria-labelledby="titulo-iniciativas"
         >
+            <h2 id="titulo-iniciativas">Nossas iniciativas</h2>
 
-            <h2>Nossas iniciativas</h2>
-
+            <!--
+                Os projetos são inseridos dinamicamente pelo JavaScript.
+                O aria-live permite que leitores de tela percebam
+                quando novos conteúdos são adicionados.
+            -->
             <div
                 class="projetos-grid"
                 id="lista-projetos"
+                aria-live="polite"
+                aria-label="Lista de projetos da ONG"
             ></div>
-
         </section>
     </main>
 </body>

@@ -11,16 +11,37 @@
 </head>
 
 <body>
+    <a
+        class="skip-link"
+        href="#conteudo-principal"
+    >
+        Pular para o conteúdo principal
+    </a>
+
     <!-- Conteúdo do cadastro -->
-    <main>
-        <section class="container">
-            <h2>Seja um colaborador</h2>
+    <main
+        id="conteudo-principal"
+        tabindex="-1"
+    >
+        <section
+            class="container"
+            aria-labelledby="titulo-cadastro"
+        >
+            <h2 id="titulo-cadastro">Seja um colaborador</h2>
 
             <p>
                 Preencha seus dados para participar das nossas iniciativas.
             </p>
 
-            <form id="formulario-voluntario">
+            <form
+                id="formulario-voluntario"
+                aria-describedby="orientacao-formulario"
+            >
+                <p id="orientacao-formulario">
+                    Os campos marcados como obrigatórios devem ser preenchidos.
+                    Preencha CPF, telefone e CEP no formato indicado.
+                </p>
+
                 <!-- Agrupamento dos dados do formulário -->
                 <fieldset>
                     <legend>Dados para cadastro</legend>
@@ -33,6 +54,7 @@
                             type="text"
                             id="nome"
                             name="nome"
+                            autocomplete="name"
                             required
                         >
                     </div>
@@ -45,9 +67,15 @@
                             type="text"
                             id="cpf"
                             name="cpf"
+                            autocomplete="off"
                             required
                             pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                            aria-describedby="ajuda-cpf"
                         >
+
+                        <small id="ajuda-cpf">
+                            Informe o CPF no formato 000.000.000-00.
+                        </small>
                     </div>
 
                     <!-- Campo para telefone -->
@@ -58,9 +86,15 @@
                             type="tel"
                             id="telefone"
                             name="telefone"
+                            autocomplete="tel"
                             required
                             pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                            aria-describedby="ajuda-telefone"
                         >
+
+                        <small id="ajuda-telefone">
+                            Informe o telefone no formato (00) 00000-0000.
+                        </small>
                     </div>
 
                     <!-- Campo para e-mail -->
@@ -71,6 +105,7 @@
                             type="email"
                             id="email"
                             name="email"
+                            autocomplete="email"
                             required
                         >
                     </div>
@@ -83,9 +118,15 @@
                             type="text"
                             id="cep"
                             name="cep"
+                            autocomplete="postal-code"
                             required
                             pattern="[0-9]{5}-[0-9]{3}"
+                            aria-describedby="ajuda-cep"
                         >
+
+                        <small id="ajuda-cep">
+                            Informe o CEP no formato 00000-000.
+                        </small>
                     </div>
                 </fieldset>
 
