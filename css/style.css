@@ -1,0 +1,781 @@
+/* ==============================
+   DESIGN SYSTEM
+   ============================== */
+:root {
+    /* Cores */
+    --cor-primaria: #176b55;
+    --cor-secundaria: #2a9d78;
+    --cor-primaria-escura: #125541;
+    --cor-titulo-secundario: #24745e;
+    --cor-fundo: #f4f8f6;
+    --cor-texto: #26332d;
+    --cor-fundo-claro: #ffffff;
+    --cor-borda: #cbd8d2;
+    --cor-rodape: #183c32;
+
+    /* Cores de validação */
+    --cor-sucesso: #198754;
+    --cor-erro: #dc3545;
+
+    /* Tipografia */
+    --fonte-principal: "Segoe UI", Arial, sans-serif;
+    --fonte-tamanho-1: 0.9rem;
+    --fonte-tamanho-2: 1.05rem;
+    --fonte-tamanho-3: 1.3rem;
+    --fonte-tamanho-4: 2rem;
+    --fonte-tamanho-5: 2.3rem;
+
+    /* Espaçamentos */
+    --espaco-1: 8px;
+    --espaco-2: 16px;
+    --espaco-3: 24px;
+    --espaco-4: 32px;
+    --espaco-5: 40px;
+    --espaco-6: 48px;
+
+    /* Bordas */
+    --raio-pequeno: 7px;
+    --raio-medio: 12px;
+    --raio-grande: 16px;
+    --raio-botao: 30px;
+}
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+   ============================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ==============================
+   CABEÇALHO
+   ============================== */
+header {
+    background: linear-gradient(
+        135deg,
+        var(--cor-primaria),
+        var(--cor-secundaria)
+    );
+
+    color: var(--cor-fundo-claro);
+    padding: 20px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Organização interna do cabeçalho */
+.header-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-3);
+}
+
+/* Título principal */
+h1 {
+    margin: 0;
+    font-size: var(--fonte-tamanho-5);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ==============================
+   NAVEGAÇÃO
+   ============================== */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--cor-fundo-claro);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    opacity: 0.75;
+}
+
+/* ==============================
+   DROPDOWN
+   ============================== */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    padding: 0;
+    background: transparent;
+    color: var(--cor-fundo-claro);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-toggle:hover {
+    background: transparent;
+    transform: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    min-width: 190px;
+    padding: 8px;
+    background-color: var(--cor-fundo-claro);
+    border-radius: var(--raio-pequeno);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transform: translateX(-50%) translateY(-5px);
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s,
+        transform 0.2s,
+        visibility 0.2s;
+
+    z-index: 10;
+}
+
+/* Links do submenu */
+.dropdown-menu a {
+    display: block;
+    padding: 10px 12px;
+    color: var(--cor-texto);
+    text-decoration: none;
+    border-radius: var(--raio-pequeno);
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-primaria);
+    opacity: 1;
+}
+
+/* Exibe o submenu ao passar o mouse */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ==============================
+   BOTÃO HAMBÚRGUER
+   ============================== */
+.menu-toggle {
+    display: none;
+    padding: 8px 12px;
+    background-color: transparent;
+    color: var(--cor-fundo-claro);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--raio-pequeno);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+
+    transform: none;
+}
+
+/* ==============================
+   CONTEÚDO PRINCIPAL
+   ============================== */
+main {
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+section {
+    margin: 0 auto 40px;
+}
+
+/* ==============================
+   TÍTULOS
+   ============================== */
+h2 {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-tamanho-4);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: var(--cor-titulo-secundario);
+    font-size: var(--fonte-tamanho-3);
+    margin-top: 0;
+}
+
+/* ==============================
+   PARÁGRAFOS
+   ============================== */
+p {
+    font-size: var(--fonte-tamanho-2);
+}
+
+/* ==============================
+   ÁREA PRINCIPAL DA HOME
+   ============================== */
+.hero {
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    background-color: var(--cor-fundo-claro);
+    border-radius: var(--raio-grande);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.hero-conteudo {
+    flex: 1;
+}
+
+.hero h2 {
+    font-size: var(--fonte-tamanho-5);
+}
+
+.hero p {
+    font-size: var(--fonte-tamanho-2);
+}
+
+/* Imagem da Home */
+.hero img {
+    width: 45%;
+    max-width: 450px;
+    border-radius: var(--raio-medio);
+    object-fit: cover;
+}
+
+/* ==============================
+   BOTÃO DA HOME
+   ============================== */
+.botao {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 28px;
+
+    background: linear-gradient(
+        135deg,
+        var(--cor-primaria),
+        var(--cor-secundaria)
+    );
+
+    color: var(--cor-fundo-claro);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--raio-botao);
+    box-shadow: 0 4px 10px rgba(23, 107, 85, 0.25);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+}
+
+.botao:hover {
+    background: linear-gradient(
+        135deg,
+        var(--cor-primaria-escura),
+        var(--cor-titulo-secundario)
+    );
+
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(23, 107, 85, 0.3);
+}
+
+/* ==============================
+   QUEM SOMOS
+   ============================== */
+.quem-somos {
+    max-width: 850px;
+    padding: 20px;
+}
+
+/* ==============================
+   CONTATO
+   ============================== */
+.contato {
+    max-width: 850px;
+
+    padding: 20px;
+}
+
+.contato p {
+    margin: 8px 0;
+}
+
+/* ==============================
+   PROJETOS
+   ============================== */
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-3);
+}
+
+.projetos-grid article {
+    grid-column: span 4;
+    background-color: var(--cor-fundo-claro);
+    padding: 25px;
+    margin: 0;
+    border-radius: var(--raio-medio);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid var(--cor-secundaria);
+    text-align: left;
+}
+
+/* ==============================
+   FORMULÁRIO
+   ============================== */
+form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--cor-fundo-claro);
+    padding: 30px;
+    border-radius: var(--raio-medio);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+input {
+    padding: 12px;
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    font-size: 1rem;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
+}
+
+/* Campo em foco */
+input:focus {
+    outline: none;
+    border-color: var(--cor-secundaria);
+
+    box-shadow:
+        0 0 0 3px rgba(42, 157, 120, 0.15);
+}
+
+/* Campo preenchido corretamente */
+input:focus:valid {
+    border-color: var(--cor-sucesso);
+
+    box-shadow:
+        0 0 0 3px rgba(25, 135, 84, 0.15);
+
+    background-color: #f4fbf7;
+}
+
+/* Campo com preenchimento inválido */
+input:focus:invalid {
+    border-color: var(--cor-erro);
+
+    box-shadow:
+        0 0 0 3px rgba(220, 53, 69, 0.15);
+
+    background-color: #fff7f7;
+}
+
+/* ==============================
+   BOTÃO DO FORMULÁRIO
+   ============================== */
+button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: var(--raio-pequeno);
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo-claro);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+}
+
+/* Estado hover */
+button:hover {
+    background-color: var(--cor-primaria-escura);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(18, 85, 65, 0.25);
+}
+
+/* Estado focus */
+button:focus {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(42, 157, 120, 0.25);
+}
+
+/* Estado active */
+button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+/* Estado disabled */
+button:disabled {
+    background-color: var(--cor-borda);
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ==============================
+   FEEDBACK
+   ============================== */
+/* Badge dos projetos */
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fundo-claro);
+    font-size: var(--fonte-tamanho-1);
+    font-weight: 600;
+    border-radius: var(--raio-botao);
+}
+
+/* Caixa de alerta */
+.alerta {
+    margin-top: 25px;
+    padding: 15px 20px;
+    border-radius: var(--raio-pequeno);
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Alerta informativo */
+.alerta-info {
+    background-color: #e8f5f0;
+    border-left: 5px solid var(--cor-secundaria);
+    color: var(--cor-primaria-escura);
+}
+
+/* ==============================
+   TOAST
+   ============================== */
+.toast {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    max-width: 350px;
+    padding: 15px 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo-claro);
+    border-left: 5px solid var(--cor-secundaria);
+    border-radius: var(--raio-pequeno);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-size: var(--fonte-tamanho-2);
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.3s,
+        transform 0.3s,
+        visibility 0.3s;
+
+    z-index: 100;
+}
+
+/* Toast visível */
+.toast.visivel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ==============================
+   RODAPÉ
+   ============================== */
+footer {
+    margin-top: 40px;
+    padding: 25px;
+    text-align: center;
+    background-color: var(--cor-rodape);
+    color: var(--cor-fundo-claro);
+}
+
+footer p {
+    margin: 0;
+    font-size: var(--fonte-tamanho-1);
+}
+
+/* ==============================
+   RESPONSIVIDADE
+   ============================== */
+/* Telas panorâmicas */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .hero {
+        max-width: 950px;
+    }
+}
+
+/* Tablets e telas médias */
+@media (max-width: 1024px) {
+    .projetos-grid article {
+        grid-column: span 6;
+    }
+
+    .hero {
+        gap: 30px;
+    }
+
+    .hero img {
+        width: 42%;
+    }
+}
+
+/* Tablets menores */
+@media (max-width: 900px) {
+    .header-conteudo {
+        gap: var(--espaco-2);
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    .hero {
+        gap: var(--espaco-3);
+        padding: 25px;
+    }
+
+    .hero h2 {
+        font-size: var(--fonte-tamanho-4);
+    }
+
+    .hero img {
+        width: 40%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 700px) {
+    header {
+        padding: 20px 0;
+    }
+
+    .header-conteudo {
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        text-align: left;
+    }
+
+    h1 {
+        font-size: var(--fonte-tamanho-4);
+    }
+
+    /* Esconde a navegação no celular */
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+        background-color: var(--cor-primaria-escura);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        z-index: 20;
+    }
+
+    /* Exibe o botão hambúrguer */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Quando o menu estiver aberto */
+    header.menu-aberto nav {
+        display: flex;
+    }
+
+    /* Ajusta o cabeçalho para o menu absoluto */
+    header {
+        position: relative;
+    }
+
+    /* Links do menu mobile */
+    nav > a,
+    .dropdown-toggle {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Dropdown no mobile */
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 0;
+        background-color: rgba(255, 255, 255, 0.08);
+        box-shadow: none;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+    }
+
+    /* Abre o submenu no mobile */
+    .dropdown.aberto .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding: 9px 20px;
+        color: var(--cor-fundo-claro);
+    }
+
+    .dropdown-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: var(--cor-fundo-claro);
+    }
+
+    main {
+        padding: 30px 0;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: var(--fonte-tamanho-3);
+    }
+
+    /* A imagem passa para baixo do texto */
+    .hero {
+        flex-direction: column;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: var(--fonte-tamanho-4);
+    }
+
+    .hero img {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* Projetos passam para uma coluna */
+    .projetos-grid article {
+        grid-column: span 12;
+    }
+
+    /* Formulário */
+    form {
+        padding: 20px;
+    }
+}
+
+/* Celulares menores */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    nav {
+        padding: 15px;
+    }
+
+    .menu-toggle {
+        font-size: 1.3rem;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero h2 {
+        font-size: var(--fonte-tamanho-3);
+    }
+
+    .botao {
+        width: 100%;
+        text-align: center;
+    }
+
+    .projetos-grid article {
+        padding: 20px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    /* Ajusta o Toast para telas pequenas */
+    .toast {
+        right: 15px;
+        bottom: 15px;
+        left: 15px;
+        max-width: none;
+    }
+}
