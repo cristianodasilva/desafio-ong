@@ -10,6 +10,13 @@
 </head>
 
 <body>
+<a
+    class="skip-link"
+    href="#app"
+>
+    Pular para o conteúdo principal
+</a>
+
 <header>
     <div class="container header-conteudo">
         <h1>ONG Esperança</h1>
@@ -19,11 +26,15 @@
             type="button"
             aria-label="Abrir menu"
             aria-expanded="false"
+            aria-controls="menu-principal"
         >
             ☰
         </button>
 
-        <nav>
+        <nav
+            id="menu-principal"
+            aria-label="Navegação principal"
+        >
             <a href="#/" data-rota="/">Início</a>
 
             <div class="dropdown">
@@ -31,11 +42,16 @@
                     class="dropdown-toggle"
                     type="button"
                     aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-controls="menu-projetos"
                 >
                     Projetos
                 </button>
 
-                <div class="dropdown-menu">
+                <div
+                    class="dropdown-menu"
+                    id="menu-projetos"
+                >
                     <a
                         href="#/projetos#doacoes"
                         data-rota="/projetos"
@@ -62,13 +78,16 @@
     </div>
 </header>
 
-<main id="app">
+<main id="app" tabindex="-1">
 
-    <section class="hero container">
+    <section
+        class="hero container"
+        aria-labelledby="titulo-hero"
+    >
 
         <div class="hero-conteudo">
 
-            <h2>
+            <h2 id="titulo-hero">
                 Transformando vidas através da solidariedade
             </h2>
 
@@ -84,20 +103,19 @@
             >
                 Quero ser voluntário
             </a>
-
         </div>
 
         <img
             src="../img/voluntarios.jpg"
             alt="Voluntários realizando uma ação de solidariedade"
         >
-
     </section>
 
-
-    <section class="quem-somos container">
-
-        <h2>Quem somos</h2>
+    <section
+        class="quem-somos container"
+        aria-labelledby="titulo-quem-somos"
+    >
+        <h2 id="titulo-quem-somos">Quem somos</h2>
 
         <p>
             Somos uma organização dedicada a desenvolver
@@ -108,13 +126,13 @@
             Acreditamos que pequenas atitudes podem transformar
             vidas e construir uma comunidade mais solidária.
         </p>
-
     </section>
 
-
-    <section class="contato container">
-
-        <h2>Entre em contato</h2>
+    <section
+        class="contato container"
+        aria-labelledby="titulo-contato"
+    >
+        <h2 id="titulo-contato">Entre em contato</h2>
 
         <p>
             E-mail: contato@ongesperanca.org
@@ -127,9 +145,7 @@
         <p>
             Endereço: Rua da Esperança, 100 - Centro
         </p>
-
     </section>
-
 </main>
 
 <footer>
