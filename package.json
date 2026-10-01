@@ -1,0 +1,26 @@
+{
+"name": "desafio-ong",
+"version": "1.0.0",
+"description": "Projeto desenvolvido para uma ONG fictícia chamada **ONG Esperança**, com o objetivo de apresentar suas ações, projetos e permitir o cadastro de usuários interessados.",
+"main": "index.js",
+"scripts": {
+"dev": "vite",
+"build": "vite build",
+"preview": "vite preview"
+},
+"repository": {
+"type": "git",
+"url": "git+https://github.com/cristianodasilva/desafio-ong.git"
+},
+"keywords": [],
+"author": "",
+"license": "ISC",
+"type": "module",
+"bugs": {
+"url": "https://github.com/cristianodasilva/desafio-ong/issues"
+},
+"homepage": "https://github.com/cristianodasilva/desafio-ong#readme",
+"devDependencies": {
+"vite": "^8.3.1"
+}
+}

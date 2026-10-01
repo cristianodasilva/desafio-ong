@@ -16,6 +16,10 @@ import {
     inicializarFormulario
 } from "./form.js";
 
+import {
+    inicializarTema
+} from "./tema.js";
+
 /* ==============================
    ROTEAMENTO DA SPA
    ============================== */
@@ -164,6 +168,8 @@ inicializarLinks();
 inicializarMenu();
 
 inicializarDropdown();
+
+inicializarTema();
 
 // Carrega a rota atual ao abrir a aplicação.
 navegar(
