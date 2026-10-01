@@ -32,6 +32,7 @@ O desenvolvimento foi realizado utilizando tecnologias web básicas, com foco em
 * **Node.js e npm** — ambiente de execução e gerenciador de pacotes, necessários para rodar o Vite.
 * **Git** — controle de versão.
 * **GitHub** — hospedagem do repositório e gerenciamento do desenvolvimento.
+* **Vercel** — publicação (deploy) do site online.
 
 ## Estrutura do projeto
 
@@ -55,6 +56,7 @@ DESAFIO-ONG/
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── vercel.json
 ├── vite.config.js
 └── README.md
 ```
@@ -158,6 +160,28 @@ Nos arquivos HTML, os caminhos de CSS, JavaScript e imagens partem da raiz do pr
 | `npm run build`   | Gera a versão de produção na pasta `dist/`.         |
 | `npm run preview` | Executa localmente a versão gerada pelo build.      |
 
+## Deploy
+
+O projeto está publicado na Vercel e pode ser acessado em:
+
+https://desafio-ong.vercel.app
+
+A Vercel executa automaticamente `npm install` e `npm run build` a cada push na branch `develop`, e publica o conteúdo da pasta `dist/`.
+
+Como o `index.html` fica em `dist/html/` e não na raiz, o arquivo `vercel.json` redireciona o endereço principal (`/`) para `/html/index.html`:
+
+```json
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/html/index.html",
+      "permanent": false
+    }
+  ]
+}
+```
+
 ## Testes
 
 A validação do projeto foi realizada manualmente durante o desenvolvimento, utilizando o navegador e o servidor de desenvolvimento do Vite (`npm run dev`), além de conferir o resultado do build com `npm run preview`.
@@ -177,6 +201,7 @@ Foram verificados:
 * Responsividade em diferentes tamanhos de tela.
 * Navegação por teclado e recursos de acessibilidade.
 * Geração do build sem erros e funcionamento da versão gerada.
+* Navegação e funcionamento do site publicado na Vercel.
 
 ## Temas
 
