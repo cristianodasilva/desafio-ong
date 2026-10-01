@@ -6,7 +6,7 @@ Projeto desenvolvido para uma ONG fictícia chamada **ONG Esperança**, com o ob
 
 A aplicação apresenta informações sobre a ONG Esperança e suas principais áreas de atuação. O projeto possui páginas para apresentação da organização, visualização dos projetos e cadastro de usuários.
 
-O desenvolvimento foi realizado utilizando tecnologias web básicas, com foco em organização do código, responsividade, acessibilidade e boas práticas de desenvolvimento.
+O desenvolvimento foi realizado utilizando tecnologias web básicas, com foco em organização do código, responsividade, acessibilidade e boas práticas de desenvolvimento. O **Vite** é utilizado como servidor de desenvolvimento e ferramenta de build.
 
 ## Funcionalidades
 
@@ -28,6 +28,8 @@ O desenvolvimento foi realizado utilizando tecnologias web básicas, com foco em
 * **CSS3** — estilização, responsividade, Grid, Flexbox, design system e temas com variáveis CSS.
 * **JavaScript** — interações, validações, navegação, troca de tema e manipulação de dados.
 * **LocalStorage** — armazenamento de informações no navegador, como os dados do formulário e a preferência de tema.
+* **Vite** — servidor de desenvolvimento e empacotamento (build) do projeto.
+* **Node.js e npm** — ambiente de execução e gerenciador de pacotes, necessários para rodar o Vite.
 * **Git** — controle de versão.
 * **GitHub** — hospedagem do repositório e gerenciamento do desenvolvimento.
 
@@ -42,7 +44,7 @@ DESAFIO-ONG/
 │   ├── projetos.html
 │   └── cadastro.html
 ├── img/
-│   └── imagens do projeto
+│   └── voluntarios.jpg
 ├── js/
 │   ├── form.js
 │   ├── nav.js
@@ -51,18 +53,29 @@ DESAFIO-ONG/
 │   ├── storage.js
 │   └── tema.js
 ├── .gitignore
+├── package.json
+├── package-lock.json
+├── vite.config.js
 └── README.md
 ```
+
+As pastas `node_modules/` (dependências) e `dist/` (resultado do build) são geradas automaticamente e não fazem parte do repositório.
 
 ## Pré-requisitos
 
 Para executar o projeto são necessários:
 
+* **Node.js** (versão LTS recente) e **npm**, que já vem junto com o Node.js. Download em https://nodejs.org
 * Navegador atualizado, como Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.
 * Editor de código, como Visual Studio Code.
 * Git, caso o projeto seja obtido através do repositório.
 
-O projeto não possui dependências externas obrigatórias e não utiliza Node.js ou npm.
+Para conferir se o Node.js e o npm estão instalados:
+
+```bash
+node -v
+npm -v
+```
 
 ## Instalação
 
@@ -78,38 +91,76 @@ Entre na pasta do projeto:
 cd desafio-ong
 ```
 
-Como o projeto utiliza HTML, CSS e JavaScript sem um gerenciador de pacotes, não é necessário executar `npm install`.
+Instale as dependências:
+
+```bash
+npm install
+```
 
 ## Execução
 
-O projeto pode ser executado diretamente pelo navegador.
+Para iniciar o servidor de desenvolvimento:
 
-Durante o desenvolvimento, recomenda-se utilizar o **Live Server** no Visual Studio Code para iniciar um servidor local e facilitar a visualização das páginas.
-
-A página inicial está localizada em:
-
-```text
-html/index.html
+```bash
+npm run dev
 ```
+
+O navegador abrirá automaticamente em `http://localhost:5173/html/index.html`. Caso não abra, acesse esse endereço manualmente.
+
+Como o `index.html` fica dentro da pasta `html/` e não na raiz do projeto, o endereço `http://localhost:5173/` sozinho retorna erro 404. Por isso o `vite.config.js` define a opção `server.open`, que abre a página correta automaticamente.
 
 Também é possível acessar diretamente:
 
 ```text
-html/projetos.html
-html/cadastro.html
+http://localhost:5173/html/projetos.html
+http://localhost:5173/html/cadastro.html
 ```
 
 > As páginas de projetos e de cadastro são carregadas dentro da página inicial pela navegação da aplicação. Quando abertas diretamente, são exibidas sem o cabeçalho e sem o seletor de tema, sempre no tema claro.
 
 ## Build
 
-O projeto atualmente não utiliza uma ferramenta de build ou empacotamento, como Vite, Webpack ou outra solução baseada em Node.js.
+Para gerar a versão otimizada do projeto para produção:
 
-Por esse motivo, não existe um comando `npm run build`. Os arquivos HTML, CSS e JavaScript são utilizados diretamente pelo navegador.
+```bash
+npm run build
+```
+
+Os arquivos são gerados na pasta `dist/`, com CSS e JavaScript minificados e imagens processadas. Os três arquivos HTML (`index`, `projetos` e `cadastro`) ficam em `dist/html/`.
+
+Para testar o resultado do build localmente:
+
+```bash
+npm run preview
+```
+
+Depois, acesse `http://localhost:4173/html/index.html`.
+
+### Configuração do Vite
+
+O arquivo `vite.config.js` possui duas configurações principais:
+
+* `server.open` — abre o navegador diretamente em `/html/index.html` ao rodar `npm run dev`.
+* `build.rollupOptions.input` — informa ao Vite os três arquivos HTML do projeto, já que nenhum deles está na raiz.
+
+Nos arquivos HTML, os caminhos de CSS, JavaScript e imagens partem da raiz do projeto, e os scripts utilizam `type="module"`:
+
+```html
+<link rel="stylesheet" href="/css/style.css">
+<script type="module" src="/js/script.js"></script>
+```
+
+### Scripts disponíveis
+
+| Comando           | Descrição                                           |
+| ----------------- | --------------------------------------------------- |
+| `npm run dev`     | Inicia o servidor de desenvolvimento.               |
+| `npm run build`   | Gera a versão de produção na pasta `dist/`.         |
+| `npm run preview` | Executa localmente a versão gerada pelo build.      |
 
 ## Testes
 
-A validação do projeto foi realizada manualmente durante o desenvolvimento, utilizando o navegador e o Live Server.
+A validação do projeto foi realizada manualmente durante o desenvolvimento, utilizando o navegador e o servidor de desenvolvimento do Vite (`npm run dev`), além de conferir o resultado do build com `npm run preview`.
 
 Foram verificados:
 
@@ -125,6 +176,7 @@ Foram verificados:
 * Comportamento do modo automático com o tema do sistema em claro e em escuro.
 * Responsividade em diferentes tamanhos de tela.
 * Navegação por teclado e recursos de acessibilidade.
+* Geração do build sem erros e funcionamento da versão gerada.
 
 ## Temas
 
@@ -184,6 +236,8 @@ Foi adotado um fluxo baseado no **GitFlow**, utilizando:
 * `feature/*` — branches destinadas ao desenvolvimento de novas funcionalidades ou melhorias.
 
 Também foram utilizados **Conventional Commits**, Issues, Milestones e Pull Requests para organizar o desenvolvimento.
+
+O arquivo `.gitignore` deve incluir `node_modules/` e `dist/`, pois são pastas geradas automaticamente. Já o `package.json` e o `package-lock.json` devem ser versionados.
 
 ### Repositório
 
