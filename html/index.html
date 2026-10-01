@@ -6,6 +6,28 @@
 
     <title>ONG Esperança</title>
 
+    <!--
+        Aplica o tema salvo antes da página ser desenhada,
+        evitando o "flash" de tema claro. A lógica completa
+        fica em ../js/tema.js.
+    -->
+    <script>
+        (function () {
+            try {
+                var salvo = localStorage.getItem("ongEsperancaTema");
+                var tema = ["claro", "escuro", "alto-contraste"].indexOf(salvo) > -1
+                    ? salvo
+                    : matchMedia("(prefers-contrast: more)").matches
+                        ? "alto-contraste"
+                        : matchMedia("(prefers-color-scheme: dark)").matches
+                            ? "escuro"
+                            : "claro";
+
+                document.documentElement.dataset.tema = tema;
+            } catch (erro) {}
+        })();
+    </script>
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -75,6 +97,42 @@
                 Seja Voluntário
             </a>
         </nav>
+
+        <!-- Botão de tema: só o ícone fica visível -->
+        <div class="seletor-tema">
+            <label for="seletor-tema" class="sr-only">Tema</label>
+
+            <svg
+                class="seletor-tema-icone"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
+                <path
+                    d="M12 3a9 9 0 0 1 0 18z"
+                    fill="currentColor"
+                />
+            </svg>
+
+            <select
+                id="seletor-tema"
+                name="tema"
+                title="Alterar tema"
+            >
+                <option value="automatico">Automático</option>
+                <option value="claro">Claro</option>
+                <option value="escuro">Escuro</option>
+                <option value="alto-contraste">Alto contraste</option>
+            </select>
+        </div>
     </div>
 </header>
 

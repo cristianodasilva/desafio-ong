@@ -95,10 +95,10 @@ function aplicarMascaraCep(campo) {
    MENSAGEM DE ERRO
    ============================== */
 function mostrarErro(campo, mensagem) {
-    campo.style.borderColor = "#c62828";
-
-    campo.style.boxShadow =
-        "0 0 0 3px rgba(198, 40, 40, 0.15)";
+    // As cores ficam no CSS (.campo-erro), para seguirem o tema.
+    campo.classList.add(
+        "campo-erro"
+    );
 
     let mensagemErro = campo.parentElement.querySelector(
         ".mensagem-erro"
@@ -110,9 +110,6 @@ function mostrarErro(campo, mensagem) {
         );
 
         mensagemErro.className = "mensagem-erro";
-        mensagemErro.style.color = "#c62828";
-        mensagemErro.style.fontSize = "0.9rem";
-        mensagemErro.style.marginTop = "2px";
         campo.parentElement.appendChild(
             mensagemErro
         );
@@ -125,9 +122,9 @@ function mostrarErro(campo, mensagem) {
    REMOVER ERRO
    ============================== */
 function removerErro(campo) {
-    campo.style.borderColor = "";
-
-    campo.style.boxShadow = "";
+    campo.classList.remove(
+        "campo-erro"
+    );
 
     const mensagemErro = campo.parentElement.querySelector(
         ".mensagem-erro"
